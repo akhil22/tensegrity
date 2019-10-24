@@ -8,6 +8,15 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: bibfile.bib
+Warning--I didn't find a database entry for "15-17"
+Warning--I didn't find a database entry for "18"
+Warning--I didn't find a database entry for "22"
+Warning--I didn't find a database entry for "23"
+Warning--I didn't find a database entry for "20"
+Warning--I didn't find a database entry for "pgradient"
+Warning--I didn't find a database entry for "drltens"
+Warning--I didn't find a database entry for "mgpds"
+Warning--I didn't find a database entry for "DBLP:journals/corr/MontadgomeryL16"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -15,7 +24,7 @@ Database file #1: bibfile.bib
 Done.
 You've used 6 entries,
             4087 wiz_defined-function locations,
-            863 strings with 8773 characters,
+            873 strings with 8875 characters,
 and the built_in function-call counts, 4524 in all, are:
 = -- 349
 > -- 127
@@ -54,3 +63,4 @@ warning$ -- 0
 while$ -- 15
 width$ -- 7
 write$ -- 92
+(There were 9 warnings)

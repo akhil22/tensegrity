@@ -30,8 +30,23 @@
 \maketitle
   \section{Introduction}
   \section{Related Work}
+  \cite{15-17} model the statics of tensegrity robots, \cite{18} used this model to come up with 
+  a kinematic controller \cite{22} uses Monte Carlo simulations to learn goal directed behaviors
+  requiring thousands of trials making this approach ineffective for real systems. 
+  \cite{23} transfers policies learned in simulation to real systems but requires hand tuning. 
+  \cite{20} exploited symmetry of a simulated super ball to learn an efficient rolling controller.
+  Classical approaches\cite{} for bipedal locomotion uses analytical model for dynamics and hand engineered
+  control policies and difficult to generalize for tensegrity robots which are highly underactuated with coupled dynamics.  
+  Direct policy search, searches in the space of policies and can effectively scale to 
+  complex high dimensional systems but require large number of samples and often get stuck in poor local minima. \cite{pgradient}
+  Guided policy search\cite{gps} uses differential dynamic programming to generate suitable guiding samples and uses 
+  importance sampling to incorporate these samples directly into the policy. 
+  Learning preodic gaits are a key problem in locomotion tasks, 
+  \cite{drltens} solves this problem by extending MDGPS\cite{mgpds} to learn a controller for the SUPERball tensegrity structure by  
   \section{Proposed Approach}
-  
+  \begin{itemize}
+    \item planning to use \cite{DBLP:journals/corr/MontadgomeryL16}
+  \end{itemize}
   \cite{gps}
   \cite{vps}
   \cite{2014-cgps}

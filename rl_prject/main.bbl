@@ -21,13 +21,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{DBLP:journals/corr/MontgomeryL16}
-\BIBentryALTinterwordspacing
-W.~Montgomery and S.~Levine, ``Guided policy search as approximate mirror
-  descent,'' \emph{CoRR}, vol. abs/1607.04614, 2016. [Online]. Available:
-  \url{http://arxiv.org/abs/1607.04614}
-\BIBentrySTDinterwordspacing
-
 \bibitem{gps}
 \BIBentryALTinterwordspacing
 S.~Levine and V.~Koltun, ``Guided policy search,'' in \emph{Proceedings of the
@@ -57,6 +50,13 @@ S.~Levine and V.~Koltun, ``Guided policy search,'' in \emph{Proceedings of the
 S.~Levine, C.~Finn, T.~Darrell, and P.~Abbeel, ``End-to-end training of deep
   visuomotor policies,'' \emph{CoRR}, vol. abs/1504.00702, 2015. [Online].
   Available: \url{http://arxiv.org/abs/1504.00702}
+\BIBentrySTDinterwordspacing
+
+\bibitem{DBLP:journals/corr/MontgomeryL16}
+\BIBentryALTinterwordspacing
+W.~Montgomery and S.~Levine, ``Guided policy search as approximate mirror
+  descent,'' \emph{CoRR}, vol. abs/1607.04614, 2016. [Online]. Available:
+  \url{http://arxiv.org/abs/1607.04614}
 \BIBentrySTDinterwordspacing
 
 \bibitem{DBLP:journals/corr/GengZBCVSAL16}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2019.9.2)  24 OCT 2019 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2019.9.2)  24 OCT 2019 18:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -356,23 +356,59 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 30.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 35.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+
+
+LaTeX Warning: Citation `15-17' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `18' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `22' on page 1 undefined on input line 34.
+
+
+LaTeX Warning: Citation `23' on page 1 undefined on input line 36.
+
+
+LaTeX Warning: Citation `20' on page 1 undefined on input line 37.
+
+
+LaTeX Warning: Citation `pgradient' on page 1 undefined on input line 41.
+
+
+LaTeX Warning: Citation `drltens' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Citation `mgpds' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Citation `drltens' on page 1 undefined on input line 47.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 51.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
+
+
+LaTeX Warning: Citation `DBLP:journals/corr/MontadgomeryL16' on page 1 undefine
+d on input line 51.
 
 (./main.bbl [1
 
-]) [2] (./main.aux) ) 
-Here is how much of TeX's memory you used:
- 559 strings out of 493030
- 5393 string characters out of 6136261
- 59617 words of memory out of 5000000
- 4149 multiletter control sequences out of 15000+600000
- 7626 words of font info for 27 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 23i,6n,19p,149b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+]) [2] (./main.aux)
 
-Output written on main.dvi (2 pages, 2972 bytes).
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 570 strings out of 493030
+ 5500 string characters out of 6136261
+ 59617 words of memory out of 5000000
+ 4159 multiletter control sequences out of 15000+600000
+ 7934 words of font info for 28 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 23i,6n,21p,180b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on main.dvi (2 pages, 4952 bytes).
