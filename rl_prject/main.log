@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2019.9.2)  24 OCT 2019 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2019.9.2)  24 OCT 2019 16:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -363,9 +363,9 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
 
-(./main.bbl) [1
+(./main.bbl [1
 
-] (./main.aux) ) 
+]) [2] (./main.aux) ) 
 Here is how much of TeX's memory you used:
  559 strings out of 493030
  5393 string characters out of 6136261
@@ -373,6 +373,6 @@ Here is how much of TeX's memory you used:
  4149 multiletter control sequences out of 15000+600000
  7626 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 23i,6n,19p,149b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 23i,6n,19p,149b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (1 page, 2832 bytes).
+Output written on main.dvi (2 pages, 2972 bytes).
