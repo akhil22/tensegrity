@@ -1,9 +1,9 @@
 <mujoco model="dbar">
-    <include file="./common/visual.xml"/>
+    <include file="./common/visual.xml"/>  
     <include file="./common/skybox.xml"/>
     <include file="./common/materials.xml"/>
-    
 	
+    <!-- C:\Users\Vishala\Documents\MS_THO\PhD_Fall_2019\Study\RL\Project\common
     <!--    <option timestep="0.01" iterations="50" solver="Newton" tolerance="1e-10" gravity = "0 0 0" collision="predefined" viscosity="0"/> -->
 
     <option timestep="0.002" iterations="50" solver="PGS" tolerance="1e-10" gravity = "0 0 -1" viscosity="0"/>
@@ -14,9 +14,9 @@
     </visual>
 
     <default>
-        <joint type="hinge" pos="0 0 0" axis="0 1 0" limited="false" range="-180 180" damping="0"/>
+        <!--<joint type="hinge" pos="0 0 0" axis="0 1 0" limited="false" range="-180 180" damping="0"/> -->
         <motor ctrllimited="false" ctrlrange="-1 1"/>
-		<tendon stiffness="0" damping=".0"/>
+		<tendon stiffness="0.9" damping=".001"/>
 		<geom size="0.02" mass="1"/>
 		<site size="0.04"/>
     </default>
@@ -26,10 +26,11 @@
         <geom name="floor" pos="0 0 -0.5" size="10 10 0.125" type="plane" material="MatPlane" condim="3"/>
         <light directional="true" diffuse=".8 .8 .8" specular=".2 .2 .2" pos="0 0 5" dir="0 0 -1"/>
         <site name="s0" pos="0 0 0"/>
-	<body>
-          <geom name="bar1" type="capsule" fromto="0.3237 -0.309 -0.150 -0.0809 0.0773 -0.0350" material="self"/>
+	<body>  
+      <geom name="bar1" type="capsule" fromto="0.3237 -0.309 -0.150 -0.0809 0.0773 -0.0350" material="self"/>
 	  <site name="b2" pos="0.3237 -0.309 -0.150"/>
-          <site name="b4" pos="-0.0809 0.0773 -0.0350"/>
+      <site name="b4" pos="-0.0809 0.0773 -0.0350"/>
+	  
 	</body>
 	<body>
 	  <geom name="bar2" type="capsule" fromto="0.3237 -0.309 0.015  -0.0809 0.0773 0.0350" material="self"/>
@@ -40,18 +41,20 @@
 	<body>
 	 <geom name="bar3" type="capsule" fromto="-0.094 0.0605 -0.04  0.376 -0.242 -0.04" material="self"/>
 	 <site name="b3" pos="-0.094 0.0605 -0.04"/>
-	 <site name="b1" pos="0.376 -0.242 -0.04"/>
-       </body>
+	 <site name="b1" pos="0.376 -0.242 -0.04"/>	 
+    </body>
 	<body>
-         <geom name="bar4" type="capsule" fromto="-0.0942 0.0605 0.04  0.3770 -0.242 0.04" material="self"/>
+     <geom name="bar4" type="capsule" fromto="-0.0942 0.0605 0.04  0.3770 -0.242 0.04" material="self"/>
 	 <site name="b9" pos="-0.0942 0.0605 0.04"/>
 	 <site name="b7" pos="0.3770 -0.242 0.04"/>
-       </body>
+	 <joint name="r3" type="free" pos="0 0 1" limited="false" damping="0" armature="0" stiffness="0"/>
+    </body>
 	<body>
-         <geom name="bar5" type="capsule" fromto="0.060 -0.03 -0.05  0.06 -0.03 0.05" material="self"/>
+    <geom name="bar5" type="capsule" fromto="0.060 -0.03 -0.05  0.06 -0.03 0.05" material="self"/>
 	 <site name="b5" pos="0.060 -0.03 -0.05"/>
 	 <site name="b6" pos="0.06 -0.03 0.05"/>
-       </body>
+	 <joint name="r4" type="free" pos="0 0 1" limited="false" damping="0" armature="0" stiffness="0"/> 
+    </body>
        <!--  <body>
 	 <geom name="floor" pos="0 0 -0.5" size="0 0 0.5" type="plane" material="grid"/>
 	 <site name="xs4" pos="-2 0 0"/>
@@ -158,19 +161,42 @@
         </spatial>
     </tendon> 
 
-  <!--  <actuator>
+   <actuator>
         <motor tendon="S1" gear="1"/>
         <motor tendon="S2" gear="1"/>
 		<motor tendon="S3" gear="1"/>
         <motor tendon="S4" gear="1"/>
-      </actuator> -->
+		<motor tendon="S5" gear="1"/>
+        <motor tendon="S6" gear="1"/>
+		<motor tendon="S7" gear="1"/>
+        <motor tendon="S8" gear="1"/>
+		<motor tendon="S9" gear="1"/>
+        <motor tendon="S10" gear="1"/>
+		<motor tendon="S11" gear="1"/>
+        <motor tendon="S12" gear="1"/>
+	    <motor tendon="S13" gear="1"/>
+        <motor tendon="S14" gear="1"/>
+		<motor tendon="S15" gear="1"/>
+        <motor tendon="S16" gear="1"/>
+		<motor tendon="S17" gear="1"/>
+		<motor tendon="S18" gear="1"/>
+        <motor tendon="S19" gear="1"/>
+		<motor tendon="S20" gear="1"/>
+        <motor tendon="S21" gear="1"/>
+	    <motor tendon="S22" gear="1"/>
+        <motor tendon="S23" gear="1"/>
+   </actuator> 
 	
-<!--	<sensor>
-		<framelinvel objtype="site" objname="s0"/>
-		<framelinvel objtype="site" objname="b1e"/>
-		<framelinvel objtype="site" objname="b2e"/>
-		<framelinvel objtype="site" objname="b3e"/>
-		<framelinvel objtype="site" objname="s4"/>
-		<framelinvel objtype="site" objname="s5"/>
-	      </sensor> -->
+	<sensor>
+		<framelinvel objtype="site" objname="b1"/>
+		<framelinvel objtype="site" objname="b2"/>
+		<framelinvel objtype="site" objname="b3"/>
+		<framelinvel objtype="site" objname="b4"/>
+		<framelinvel objtype="site" objname="b5"/>
+		<framelinvel objtype="site" objname="b6"/>
+        <framelinvel objtype="site" objname="b7"/>
+		<framelinvel objtype="site" objname="b8"/>
+		<framelinvel objtype="site" objname="b9"/>
+		<framelinvel objtype="site" objname="b10"/>
+	</sensor>
 </mujoco>
