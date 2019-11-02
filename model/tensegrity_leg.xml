@@ -1,17 +1,19 @@
 <mujoco model="dbar">
-    <include file="./common/visual.xml"/>  
+  <!--    <include file="./common/visual.xml"/>  
     <include file="./common/skybox.xml"/>
-    <include file="./common/materials.xml"/>
+    <include file="./common/materials.xml"/> -->
 	
-    <!-- C:\Users\Vishala\Documents\MS_THO\PhD_Fall_2019\Study\RL\Project\common
-    <!--    <option timestep="0.01" iterations="50" solver="Newton" tolerance="1e-10" gravity = "0 0 0" collision="predefined" viscosity="0"/> -->
+    <!-- C:\Users\Vishala\Documents\MS_THO\PhD_Fall_2019\Study\RL\Project\commona -->
+    <!-- <option timestep="0.01" iterations="50" solver="Newton" tolerance="1e-10" gravity = "0 0 0" collision="predefined" viscosity=" 0"/>     -->
+
+    
 
     <option timestep="0.002" iterations="50" solver="PGS" tolerance="1e-10" gravity = "0 0 -1" viscosity="0"/>
     <size njmax="100" nconmax="20" nstack="400"/>
 
-    <visual>
+    <!--    <visual>
         <rgba haze=".15 .25 .35 1"/>
-    </visual>
+      </visual> -->
 
     <default>
         <!--<joint type="hinge" pos="0 0 0" axis="0 1 0" limited="false" range="-180 180" damping="0"/> -->
@@ -20,40 +22,40 @@
 		<geom size="0.02" mass="1"/>
 		<site size="0.04"/>
     </default>
-    <asset><texture type="skybox" builtin="gradient" width="100" height="100" rgb1=".4 .6 .8" rgb2="0 0 0"/><texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/><texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="100" height="100"/><material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="1 1" texuniform="true"/><material name="geom" texture="texgeom" texuniform="true"/></asset>
+    <!--    <asset><texture type="skybox" builtin="gradient" width="100" height="100" rgb1=".4 .6 .8" rgb2="0 0 0"/><texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/><texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="100" height="100"/><material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="1 1" texuniform="true"/><material name="geom" texture="texgeom" texuniform="true"/></asset> -->
 
     <worldbody>
-        <geom name="floor" pos="0 0 -0.5" size="10 10 0.125" type="plane" material="MatPlane" condim="3"/>
+        <geom name="floor" pos="0 0 -0.5" size="10 10 0.125" type="plane" condim="3"/>
         <light directional="true" diffuse=".8 .8 .8" specular=".2 .2 .2" pos="0 0 5" dir="0 0 -1"/>
         <site name="s0" pos="0 0 0"/>
 	<body>  
-      <geom name="bar1" type="capsule" fromto="0.3237 -0.309 -0.150 -0.0809 0.0773 -0.0350" material="self"/>
+      <geom name="bar1" type="capsule" fromto="0.3237 -0.309 -0.150 -0.0809 0.0773 -0.0350"/>
 	  <site name="b2" pos="0.3237 -0.309 -0.150"/>
       <site name="b4" pos="-0.0809 0.0773 -0.0350"/>
 	  
 	</body>
 	<body>
-	  <geom name="bar2" type="capsule" fromto="0.3237 -0.309 0.015  -0.0809 0.0773 0.0350" material="self"/>
+	  <geom name="bar2" type="capsule" fromto="0.3237 -0.309 0.015  -0.0809 0.0773 0.0350"/>
 	  <site name="b8" pos="0.3237 -0.309 0.015"/>
 	  <site name="b10" pos="-0.0809 0.0773 0.0350"/>
 	  <joint name="r2" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="0"/>
 	</body>
 	<body>
-	 <geom name="bar3" type="capsule" fromto="-0.094 0.0605 -0.04  0.376 -0.242 -0.04" material="self"/>
+	 <geom name="bar3" type="capsule" fromto="-0.094 0.0605 -0.04  0.376 -0.242 -0.04"/>
 	 <site name="b3" pos="-0.094 0.0605 -0.04"/>
 	 <site name="b1" pos="0.376 -0.242 -0.04"/>	 
     </body>
 	<body>
-     <geom name="bar4" type="capsule" fromto="-0.0942 0.0605 0.04  0.3770 -0.242 0.04" material="self"/>
+     <geom name="bar4" type="capsule" fromto="-0.0942 0.0605 0.04  0.3770 -0.242 0.04" />
 	 <site name="b9" pos="-0.0942 0.0605 0.04"/>
 	 <site name="b7" pos="0.3770 -0.242 0.04"/>
 	 <joint name="r3" type="free" pos="0 0 1" limited="false" damping="0" armature="0" stiffness="0"/>
     </body>
 	<body>
-    <geom name="bar5" type="capsule" fromto="0.060 -0.03 -0.05  0.06 -0.03 0.05" material="self"/>
+    <geom name="bar5" type="capsule" fromto="0.060 -0.03 -0.05  0.06 -0.03 0.05"/>
 	 <site name="b5" pos="0.060 -0.03 -0.05"/>
 	 <site name="b6" pos="0.06 -0.03 0.05"/>
-	 <joint name="r4" type="free" pos="0 0 1" limited="false" damping="0" armature="0" stiffness="0"/> 
+	 <!--	 <joint name="r4" type="free" pos="0 0 1" limited="false" damping="0" armature="0" stiffness="0"/>  -->
     </body>
        <!--  <body>
 	 <geom name="floor" pos="0 0 -0.5" size="0 0 0.5" type="plane" material="grid"/>
