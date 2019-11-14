@@ -38,7 +38,7 @@
 	  <geom name="bar2" type="capsule" fromto="0.3237 -0.309 0.015  -0.0809 0.0773 0.0350"/>
 	  <site name="b8" pos="0.3237 -0.309 0.015"/>
 	  <site name="b10" pos="-0.0809 0.0773 0.0350"/>
-	  <joint name="r2" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="0"/>
+<!--	  <joint name="r2" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="0"/> -->
 	</body>
 	<body>
 	 <geom name="bar3" type="capsule" fromto="-0.094 0.0605 -0.04  0.376 -0.242 -0.04"/>
@@ -49,7 +49,7 @@
      <geom name="bar4" type="capsule" fromto="-0.0942 0.0605 0.04  0.3770 -0.242 0.04" />
 	 <site name="b9" pos="-0.0942 0.0605 0.04"/>
 	 <site name="b7" pos="0.3770 -0.242 0.04"/>
-	 <joint name="r3" type="free" pos="0 0 1" limited="false" damping="0" armature="0" stiffness="0"/>
+<!--	 <joint name="r3" type="free" pos="0 0 1" limited="false" damping="0" armature="0" stiffness="0"/> -->
     </body>
 	<body>
     <geom name="bar5" type="capsule" fromto="0.060 -0.03 -0.05  0.06 -0.03 0.05"/>
