@@ -5,7 +5,7 @@ import os
 cwd = os.path.dirname(os.path.abspath(__file__))
 class TensLeg(mujoco_env.MujocoEnv, utils.EzPickle):
     def __init__(self):
-        mujoco_env.MujocoEnv.__init__(self, cwd+'/tensegrity_leg.xml', 5)
+        mujoco_env.MujocoEnv.__init__(self, cwd+'/tensegrity_legv1.xml', 5)
         utils.EzPickle.__init__(self)
 
     def step(self, action):
