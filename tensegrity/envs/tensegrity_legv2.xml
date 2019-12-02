@@ -1,6 +1,6 @@
 <mujoco model="dbar"> <include file="./common/visual.xml"/>  <include file="./common/skybox.xml"/> <include file="./common/materials.xml"/>
     <option timestep="0.002" iterations="100" solver="CG" tolerance="1e-10" gravity = "-9.8 0 0" viscosity="0"/>
-    <size njmax="100" nconmax="20" nstack="40000"/>
+    <size njmax="100" nconmax="200" nstack="40000"/>
 
     <default>
 		<motor ctrllimited="true" ctrlrange="-0.5 0.5"/>
@@ -43,7 +43,7 @@
 		<joint name="tormotionx" type="slide" axis="1 0 0" limited="false" range="2 10"/>
 		<joint name="tormotiony" type="slide" axis="0 1 0" limited="false" range="0.0 0.1"/>
 		<joint name="tormotionz" type="slide" axis="0 0 1" limited="true" range="0.0 0.1"/>
-       		<joint name="tormotionrot" type="hinge" axis="0 0 1" limited="false" range="0.0 0.1"/> 
+       		<joint name="tormotionrot" type="hinge" axis="0 0 1" limited="false" range="0.0 0.1"/>
 	</body>
 
 		<body name="Lower_leg"> 		     
@@ -245,7 +245,7 @@
    </actuator> 
 	
 	<sensor>
-		<framelinvel objtype="site" objname="b1L"/>
+		<!--<framelinvel objtype="site" objname="b1L"/>
 		<framelinvel objtype="site" objname="b2L"/>
 		<framelinvel objtype="site" objname="b3L"/>
 		<framelinvel objtype="site" objname="b4L"/>
@@ -254,7 +254,13 @@
 		<framelinvel objtype="site" objname="b7L"/>
 		<framelinvel objtype="site" objname="b8L"/>
 		<framelinvel objtype="site" objname="b9L"/>
-		<framelinvel objtype="site" objname="b10L"/>
+		<framelinvel objtype="site" objname="b10L"/> -->
+          <touch name="sensor_touch_Lfeet1" site="b2L" />
+          <touch name="sensor_touch_Lfeet2" site="b8L" />
+	  <touch name="sensor_touch_Ltoe1" site="b3L" />
+          <touch name="sensor_touch_Ltoe2" site="b9L" />
+          <touch name="sensor_touch_Lknee1" site="b4L" />
+          <touch name="sensor_touch_Lknee2" site="b10L" />
 
 	</sensor>
 </mujoco>
