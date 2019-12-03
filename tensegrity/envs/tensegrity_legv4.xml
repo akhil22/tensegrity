@@ -6,7 +6,7 @@
     <size njmax="1000" nconmax="100" nstack="40000"/>
 
     <default>
-		<motor ctrllimited="true" ctrlrange="-0.5 0"/>
+		<motor ctrllimited="true" ctrlrange="-0.5 0.5"/>
 		<tendon stiffness="1000" damping="0.1" range="0.01 10"/>
 		<geom size="0.02" mass="1"/>
 		<site size="0.04"/>
@@ -16,15 +16,15 @@
     <asset><texture type="skybox" builtin="gradient" width="100" height="100" rgb1=".4 .6 .8" rgb2="0 0 0"/><texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/><texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="100" height="100"/><material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="1 1" texuniform="true"/><material name="geom" texture="texgeom" texuniform="true"/></asset>
 
     <worldbody>
-        <geom name="floor" pos="-0.4 0 0" euler="0 90 0" size="100 100 0.125" type="plane" material="MatPlane" condim="3"/>
+        <geom name="floor" pos="-0.5 0 0" euler="0 90 0" size="100 100 0.125" type="plane" material="MatPlane" condim="3"/>
         <light directional="true" diffuse=".8 .8 .8" specular=".2 .2 .2" pos="0 0 5" dir="0 0 -1"/>
         <site name="s0" pos="0 0 0"/>
 		
 		<body name='torso1'>
                                                   <camera name="track" mode="trackcom" pos="1 0 -4" xyaxes="0 1 0 1 0 0.3"/>
 			<geom name="torso" mass="10" type="box" pos="1 0 0.2" size="0.5 0.1 0.4" material="self"/>
-		   <site name="At1" pos="-0.3800046 -0.3306 -0.15456"/>
-			<site name="At2" pos="0.04222 0.0367 -0.0350"/>
+		   <!--<site name="At1" pos="-0.3800046 -0.3306 -0.15456"/>
+			<site name="At2" pos="0.04222 0.0367 -0.0350"/> -->
 		  
 			<body name="body_bar00L"> 		     
 				<geom name="bar00L" type="capsule" fromto="0.5 0 -0.15 0.4 0 -0.15" material="self"/>
@@ -35,7 +35,7 @@
 				<geom name="bar4L" type="capsule" fromto="-0.1679 -0.00258 -0.07  0.3919 0.00603 -0.07" material="self" mass="1"/>
 				<site name="b9L" pos="-0.1679 -0.00258 -0.07"/>
 				<site name="b7L" pos="0.3919 0.00603 -0.07"/>
-				<joint name="t2bar00L" type="hinge" pos="0.5 0 -0.15" limited="true" damping="5" armature="0.02" stiffness="20" range="-30 30"/> 
+				<joint name="t2bar00L" type="hinge" pos="0.5 0 -0.15" limited="true" damping="0" armature="0.02" stiffness="0" range="-30 30" axis="0 0 1"/> 
 			</body>
 		
 			<body name="body_bar00R"> 		     
@@ -47,7 +47,7 @@
 				<geom name="bar4R" type="capsule" fromto="-0.1679 -0.00258 0.47  0.3919 0.00603 0.47" material="self" mass="1"/>
 				<site name="b9R" pos="-0.1679 -0.00258 0.47"/>
 				<site name="b7R" pos="0.3919 0.00603 0.47"/>
-				<joint name="t2bar00R" type="hinge" pos="0.5 0 0.55" limited="true" damping="5" armature="0.02" stiffness="20" range="-30 70"/> 
+				<joint name="t2bar00R" type="hinge" pos="0.5 0 0.55" limited="true" damping="5" armature="0.02" stiffness="20" range="-30 30" axis="0 0 1"/> 
 			</body>
 			<joint name="tormotionx" type="slide" axis="1 0 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
 			<joint name="tormotiony" type="slide" axis="0 1 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
@@ -151,15 +151,16 @@
 	 <site name="target" pos="0 0 2.5" size="0.08" rgba="1 0 0 .3"/>
        </body> -->
     </worldbody>	
-<!--<equality>
-		<connect active="true" name='1bar34' body1="body_bar00L" body2="body_bar0L" anchor="0.4 0 -0.4"/>
-</equality>  -->
+<equality>
+<!--		<connect active="true" name='1bar34' body1="body_bar00L" body2="body_bar0L" anchor="0.4 0 -0.4"/> -->
+     <joint name="hip_cons" joint1="t2bar00L" joint2="t2bar00R" polycoef="0 -1 0 0 0"/>
+</equality>  
   <tendon>
         <spatial name="S1L" width="0.01">
             <site site="b2L"/>
             <site site="b3L"/>
         </spatial>
-  	<spatial name="S2L" width="0.01">
+  	<spatial name="S2L" width="0.01" range="0.1 0.15">
             <site site="b3L"/>
             <site site="b4L"/>
         </spatial>
@@ -252,7 +253,7 @@
             <site site="b2R"/>
             <site site="b3R"/>
         </spatial>
-  	<spatial name="S2R" width="0.01">
+  	<spatial name="S2R" width="0.01" range="0.1 0.15">
             <site site="b3R"/>
             <site site="b4R"/>
         </spatial>
@@ -391,10 +392,10 @@
 	    <motor tendon="S22R" gear="200"/>-->
       <!-- <motor tendon="S23R" gear="200"/>-->
 
-	<motor name="hL" joint="t2bar00L" gear="1000" ctrllimited="true" ctrlrange="-0.5 0.5"/>
-	<motor name="hR" joint="t2bar00R" gear="1000" ctrllimited="true" ctrlrange="-0.5 0.5"/>
-	<motor name="hLf" joint="t2feet00L" gear="200" ctrllimited="true" ctrlrange="-0.5 0.5"/>
-	<motor name="hRf" joint="t2feet00R" gear="200" ctrllimited="true" ctrlrange="-0.5 0.5"/>
+<!--	<position name="hL" joint="t2bar00L" gear="1" ctrllimited="false" kp="100" ctrlrange="-0.5 0.5"/> -->
+	<motor name="hR" joint="t2bar00R" gear="200" ctrllimited="false" ctrlrange="-1 1"/>
+	<position name="hLf" joint="t2feet00L" gear="1" ctrllimited="true" kp="100" ctrlrange="-0.5 0.5"/>
+	<position name="hRf" joint="t2feet00R" gear="1" ctrllimited="true" kp="100" ctrlrange="-0.5 0.5"/>
    </actuator> 
 	
 	<sensor>
