@@ -1,0 +1,414 @@
+<mujoco model="dbar"> <include file="./common/visual.xml"/>  <include file="./common/skybox.xml"/> <include file="./common/materials.xml"/>
+	
+    <!-- C:\Users\Vishala\Documents\MS_THO\PhD_Fall_2019\Study\RL\Project\common -->
+    <!--    <option timestep="0.01" iterations="50" solver="Newton" tolerance="1e-10" gravity = "0 0 0" collision="predefined" viscosity="0"/> -->
+ <option timestep="0.002" iterations="100" solver="CG" tolerance="1e-10" gravity = "-9.8 0 0" viscosity="0"/>
+    <size njmax="1000" nconmax="100" nstack="40000"/>
+
+    <default>
+		<motor ctrllimited="true" ctrlrange="-0.5 0"/>
+		<tendon stiffness="0" damping="0.1" range="0.01 10"/>
+		<geom size="0.02" mass="1"/>
+		<site size="0.04"/>
+		<camera pos="0 0 10"/>
+	</default>
+	
+    <asset><texture type="skybox" builtin="gradient" width="100" height="100" rgb1=".4 .6 .8" rgb2="0 0 0"/><texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/><texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="100" height="100"/><material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="1 1" texuniform="true"/><material name="geom" texture="texgeom" texuniform="true"/></asset>
+
+    <worldbody>
+        <geom name="floor" pos="-1 0 0" euler="0 90 0" size="100 100 0.125" type="plane" material="MatPlane" condim="3"/>
+        <light directional="true" diffuse=".8 .8 .8" specular=".2 .2 .2" pos="0 0 5" dir="0 0 -1"/>
+        <site name="s0" pos="0 0 0"/>
+		
+		<body name='torso1'>
+                                                  <camera name="track" mode="trackcom" pos="1 0 -4" xyaxes="0 1 0 1 0 0.3"/>
+			<geom name="torso" mass="10" type="box" pos="1 0 0.2" size="0.5 0.1 0.4" material="self"/>
+		   <site name="At1" pos="-0.3800046 -0.3306 -0.15456"/>
+			<site name="At2" pos="0.04222 0.0367 -0.0350"/>
+		  
+			<body name="body_bar00L"> 		     
+				<geom name="bar00L" type="capsule" fromto="0.5 0 -0.15 0.4 0 -0.15" material="self"/>
+				<geom name="bar0L" type="capsule" fromto="0.4 0 -0.05 0.4 0 -0.25" material="self"/>
+				<geom name="bar3L" type="capsule" fromto="-0.1679 -0.00258 -0.15  0.3919 0.00603 -0.15" material="self" mass="1"/>
+				<site name="b3L" pos="-0.1679 -0.00258 -0.15"/>
+				<site name="b1L" pos="0.3919 0.00603 -0.15"/>	 
+				<geom name="bar4L" type="capsule" fromto="-0.1679 -0.00258 -0.07  0.3919 0.00603 -0.07" material="self" mass="1"/>
+				<site name="b9L" pos="-0.1679 -0.00258 -0.07"/>
+				<site name="b7L" pos="0.3919 0.00603 -0.07"/>
+				<joint name="t2bar00L" type="hinge" pos="0.5 0 -0.15" limited="true" damping="5" armature="0.02" stiffness="20" range="-30 30"/> 
+			</body>
+		
+			<body name="body_bar00R"> 		     
+				<geom name="bar00R" type="capsule" fromto="0.5 0 0.55 0.4 0 0.55" material="self"/>
+				<geom name="bar0R" type="capsule" fromto="0.4 0 0.45 0.4 0 0.65" material="self"/>
+				<geom name="bar3R" type="capsule" fromto="-0.1679 -0.00258 0.55  0.3919 0.00603 0.55" material="self" mass="1"/>
+				<site name="b3R" pos="-0.1679 -0.00258 0.55"/>
+				<site name="b1R" pos="0.3919 0.00603 0.55"/>	 
+				<geom name="bar4R" type="capsule" fromto="-0.1679 -0.00258 0.47  0.3919 0.00603 0.47" material="self" mass="1"/>
+				<site name="b9R" pos="-0.1679 -0.00258 0.47"/>
+				<site name="b7R" pos="0.3919 0.00603 0.47"/>
+				<joint name="t2bar00R" type="hinge" pos="0.5 0 0.55" limited="true" damping="5" armature="0.02" stiffness="20" range="-30 70"/> 
+			</body>
+			<joint name="tormotionx" type="slide" axis="1 0 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
+			<joint name="tormotiony" type="slide" axis="0 1 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
+			<joint name="tormotionz" type="slide" axis="0 0 1" limited="true" range="0.0 0.1" damping="0" stiffness="0"/>
+		<!--	<joint name="tormotionxR" type="slide" axis="1 0 0" limited="false" range="0.0 0.1"/>
+			<joint name="tormotionyR" type="slide" axis="0 1 0" limited="false" range="0.0 0.1"/>
+			<joint name="tormotionzR" type="slide" axis="0 0 1" limited="true" range="0.0 0.1"/> -->
+			<joint name="tormotionrot" type="hinge" axis="0 0 1" limited="true" range="0.0 0.1" damping="0" stiffness="0"/> 
+		</body>
+       <!-- <body name="body_bar0L">  
+      	 <geom name="bar0L" type="capsule" fromto="0.4 0 -0.3 0.4 0 -0.5" material="self"/>
+	 <site name="t2bar0L" pos="-0.3800046 -0.3306 -0.15456"/>
+      	 <site name="At8" pos="0.04222 0.0367 -0.0350"/> 
+	<joint name="r1" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="0.2"/>	
+        </body> -->
+        
+        <body name="Lower_leg_left">  
+			 <geom name="bar1L" type="capsule" fromto="-0.3800046 -0.3306 -0.26456 0.04222 0.0367 -0.1450" material="self" mass="1"/>
+			<site name="b2L" pos="-0.3800046 -0.3306 -0.26456"/>
+			 <site name="b4L" pos="0.04222 0.0367 -0.1450"/>
+                <body name='left_f' pos="0 0.3 0">
+                         <geom name="bar1Lfoot" type="capsule" fromto="-0.3800046 -0.3306 -0.26456  -0.3800046 -0.6 -0.26456" material="self" mass="1" size="0.07"/>
+ 
+<geom name="bar2Lfoot" type="capsule" fromto="-0.3800046 -0.3306 0.0544 -0.3800046 -0.6 0.0544" material="self" mass="1" size="0.07"/>
+ 	<joint name="t2feet00L" type="hinge" pos="-0.3800046 -0.6306 0.0544" limited="true" damping="5" armature="0.02" stiffness="20" range="-10 70"/> 
+                </body>
+<!--			 <joint name="bar1motionzL" type="slide" axis="0 0 1" limited="true" range="0.0 0.1"/>
+			 <joint name="bar1motionxL" type="slide" axis="1 0 0" limited="false" range="0.0 100"/>
+			 <joint name="bar1motionyL" type="slide" axis="0 1 0" limited="false" range="0.0 100"/> -->
+	 <!-- <joint name="r1L" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="0.2"/>  -->	
+			 <geom name="bar2L" type="capsule" fromto="-0.3800046 -0.3306 0.0544  0.04222 0.0367 -0.075" material="self" mass="1"/>
+
+			  <site name="b8L" pos="-0.3800046 -0.3306 0.0544"/>
+			  <site name="b10L" pos="0.04222 0.0367 -0.075"/>
+                          
+		  <!--<joint name="r2L" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="20"/> -->
+			  <joint name="bar2motionzL" type="slide" axis="0 0 1" limited="true" range="0.0 0.1" damping="0" stiffness="0"/>
+			  <joint name="bar2motionxL" type="slide" axis="1 0 0" limited="false" range="0.0 100" damping="0" stiffness="0"/>
+			  <joint name="bar2motionyL" type="slide" axis="0 1 0" limited="false" range="0.0 100" damping="0" stiffness="0"/> 
+                         <joint name="bar2motionrot" type="hinge" axis="0 0 1" limited="false" range="0.0 0.1" damping="0" stiffness="0"/> 		
+		</body>
+	
+
+		<body>
+			<geom name="bar5L" type="capsule" fromto="0.020 -0.05 -0.195  0.020 -0.05 -0.025" material="self" mass="5"/>
+			<site name="b5L" pos="0.020 -0.05 -0.195"/>
+			<site name="b6L" pos="0.020 -0.05 -0.025"/>
+			<joint name="bar5motionxL" type="slide" axis="1 0 0" limited="false" damping="0" stiffness="0"/>
+			<joint name="bar5motionyL" type="slide" axis="0 1 0" limited="false" damping="0" stiffness="0"/>
+			<joint name="bar5motionzL" type="slide" axis="0 0 1" limited="true" range="0.0 0.01" damping="0" stiffness="0"/>
+    	</body> 
+
+        
+        <body name="Lower_leg_right">  
+			 <geom name="bar1R" type="capsule" fromto="-0.3800046 -0.3306 0.33544 0.04222 0.0367 0.455" material="self" mass="1"/>
+			<site name="b2R" pos="-0.3800046 -0.3306 0.33544"/>
+			 <site name="b4R" pos="0.04222 0.0367 0.455"/>
+<body name='foot_r' pos="0 0.3 0">
+<geom name="bar1Rfoot" type="capsule" fromto="-0.3800046 -0.3306 0.33544 -0.3800046 -0.6 0.33544" material="self" mass="1" size="0.07"/>
+<geom name="bar2Rfoot" type="capsule" fromto="-0.3800046 -0.3306 0.68456 -0.3800046 -0.6 0.68456" material="self" mass="1" size="0.07"/>
+<joint name="t2feet00R" type="hinge" pos="-0.3800046 -0.6306 0.64456" limited="true" damping="5" armature="0.02" stiffness="20" range="-10 70"/> 
+</body>
+			<!-- <joint name="bar1motionzR" type="slide" axis="0 0 1" limited="true" range="0.0 0.1"/>
+			 <joint name="bar1motionxR" type="slide" axis="1 0 0" limited="false" range="0.0 100"/>
+			 <joint name="bar1motionyR" type="slide" axis="0 1 0" limited="false" range="0.0 100"/> -->
+	 <!-- <joint name="r1L" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="0.2"/>  -->
+	
+		  <geom name="bar2R" type="capsule" fromto="-0.3800046 -0.3306 0.68456  0.04222 0.0367 0.565" material="self" mass="1"/>
+		  <site name="b8R" pos="-0.3800046 -0.3306 0.68456"/>
+		  <site name="b10R" pos="0.04222 0.0367 0.565"/>
+
+	  <!--<joint name="r2L" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="20"/> -->
+          <joint name="bar2motionzR" type="slide" axis="0 0 1" limited="true" range="0.0 0.1" damping="0" stiffness="0"/>
+          <joint name="bar2motionxR" type="slide" axis="1 0 0" limited="false" range="0.0 100" damping="0" stiffness="0"/>
+          <joint name="bar2motionyR" type="slide" axis="0 1 0" limited="false" range="0.0 100" damping="0" stiffness="0"/>
+          <joint name="bar2motionrotR" type="hinge" axis="0 0 1" limited="false" range="0.0 0.1" damping="0" stiffness="0"/> 	 
+		</body>		
+
+	
+	<body>
+		<geom name="bar5R" type="capsule" fromto="0.020 -0.05 0.405  0.020 -0.05 0.575" material="self"/>
+		 <site name="b5R" pos="0.020 -0.05 0.405"/>
+		 <site name="b6R" pos="0.020 -0.05 0.575"/>
+		 <joint name="bar5motionxR" type="slide" axis="1 0 0" limited="false" damping="0" stiffness="0"/>
+        <joint name="bar5motionyR" type="slide" axis="0 1 0" limited="false" damping="0" stiffness="0"/>
+        <joint name="bar5motionzR" type="slide" axis="0 0 1" limited="true" range="0.0 0.01" damping="0" stiffness="0"/>
+	</body> 
+ 
+	
+
+
+
+
+
+       <!--  <body>
+	 <geom name="floor" pos="0 0 -0.5" size="0 0 0.5" type="plane" material="grid"/>
+	 <site name="xs4" pos="-2 0 0"/>
+	 <site name="xs5" pos="2 0 0"/>
+	 <site name="target" pos="0 0 2.5" size="0.08" rgba="1 0 0 .3"/>
+       </body> -->
+    </worldbody>	
+<!--<equality>
+		<connect active="true" name='1bar34' body1="body_bar00L" body2="body_bar0L" anchor="0.4 0 -0.4"/>
+</equality>  -->
+  <tendon>
+        <spatial name="S1L" width="0.01">
+            <site site="b2L"/>
+            <site site="b3L"/>
+        </spatial>
+  	<spatial name="S2L" width="0.01">
+            <site site="b3L"/>
+            <site site="b4L"/>
+        </spatial>
+	<spatial name="S3L" width="0.01">
+            <site site="b4L"/>
+            <site site="b1L"/>
+        </spatial>
+	<spatial name="S4L" width="0.01">
+            <site site="b1L"/>
+            <site site="b5L"/>
+        </spatial>
+	<spatial name="S5L" width="0.01">
+            <site site="b2L"/>
+            <site site="b5L"/>
+        </spatial>
+	<spatial name="S6L" width="0.01">
+            <site site="b3L"/>
+            <site site="b5L"/>
+        </spatial>
+	<spatial name="S7L" width="0.01">
+            <site site="b4L"/>
+            <site site="b5L"/>
+        </spatial>
+	<!--<spatial name="S8L" width="0.01">
+            <site site="b1L"/>
+            <site site="b6L"/>
+        </spatial>
+	<spatial name="S9L" width="0.01">
+            <site site="b2L"/>
+            <site site="b6L"/>
+        </spatial>
+	<spatial name="S10L" width="0.01">
+            <site site="b3L"/>
+            <site site="b6L"/>
+        </spatial> 
+	<spatial name="S11L" width="0.01">
+            <site site="b4L"/>
+            <site site="b6L"/>
+        </spatial>-->
+	<spatial name="S12L" width="0.01">
+            <site site="b8L"/>
+            <site site="b9L"/>
+        </spatial>
+	<spatial name="S13L" width="0.01">
+            <site site="b9L"/>
+            <site site="b10L"/>
+        </spatial>
+	<spatial name="S14L" width="0.01">
+            <site site="b10L"/>
+            <site site="b7L"/>
+        </spatial>
+	<!--<spatial name="S15L" width="0.01">
+            <site site="b5L"/>
+            <site site="b7L"/>
+        </spatial>
+	<spatial name="S16L" width="0.01">
+            <site site="b5L"/>
+            <site site="b8L"/>
+        </spatial>
+	<spatial name="S17L" width="0.01">
+            <site site="b5L"/>
+            <site site="b9L"/>
+        </spatial>
+      <spatial name="S18L" width="0.01">
+            <site site="b5L"/>
+            <site site="b10L"/>
+	</spatial>-->
+	<spatial name="S19L" width="0.01">
+            <site site="b6L"/>
+            <site site="b7L"/>
+        </spatial>
+	<spatial name="S20L" width="0.01">
+            <site site="b6L"/>
+            <site site="b8L"/>
+        </spatial>
+	<spatial name="S21L" width="0.01">
+            <site site="b6L"/>
+            <site site="b9L"/>
+        </spatial>
+	<spatial name="S22L" width="0.01">
+            <site site="b6L"/>
+            <site site="b10L"/>
+        </spatial>
+	<!--<spatial name="S23L" width="0.01">
+            <site site="b4L"/>
+            <site site="b10L"/>
+        </spatial> -->
+
+   <spatial name="S1R" width="0.01">
+            <site site="b2R"/>
+            <site site="b3R"/>
+        </spatial>
+  	<spatial name="S2R" width="0.01">
+            <site site="b3R"/>
+            <site site="b4R"/>
+        </spatial>
+	<spatial name="S3R" width="0.01">
+            <site site="b4R"/>
+            <site site="b1R"/>
+        </spatial>
+	<spatial name="S4R" width="0.01">
+            <site site="b1R"/>
+            <site site="b5R"/>
+        </spatial>
+	<spatial name="S5R" width="0.01">
+            <site site="b2R"/>
+            <site site="b5R"/>
+        </spatial>
+	<spatial name="S6R" width="0.01">
+            <site site="b3R"/>
+            <site site="b5R"/>
+        </spatial>
+	<spatial name="S7R" width="0.01">
+            <site site="b4R"/>
+            <site site="b5R"/>
+        </spatial>
+	<!--<spatial name="S8R" width="0.01">
+            <site site="b1R"/>
+            <site site="b6R"/>
+        </spatial>
+	<spatial name="S9R" width="0.01">
+            <site site="b2R"/>
+            <site site="b6R"/>
+        </spatial>
+	<spatial name="S10R" width="0.01">
+            <site site="b3R"/>
+            <site site="b6R"/>
+        </spatial>
+	<spatial name="S11R" width="0.01">
+            <site site="b4R"/>
+            <site site="b6R"/>
+        </spatial>-->
+	<spatial name="S12R" width="0.01">
+            <site site="b8R"/>
+            <site site="b9R"/>
+        </spatial>
+	<spatial name="S13R" width="0.01">
+            <site site="b9R"/>
+            <site site="b10R"/>
+        </spatial>
+	<spatial name="S14R" width="0.01">
+            <site site="b10R"/>
+            <site site="b7R"/>
+        </spatial>
+	<!--<spatial name="S15R" width="0.01">
+            <site site="b5R"/>
+            <site site="b7R"/>
+        </spatial>
+	<spatial name="S16R" width="0.01">
+            <site site="b5R"/>
+            <site site="b8R"/>
+        </spatial>
+	<spatial name="S17R" width="0.01">
+            <site site="b5R"/>
+            <site site="b9R"/>
+        </spatial>
+      <spatial name="S18R" width="0.01">
+            <site site="b5R"/>
+            <site site="b10R"/>
+	</spatial>-->
+	<spatial name="S19R" width="0.01">
+            <site site="b6R"/>
+            <site site="b7R"/>
+        </spatial>
+	<spatial name="S20R" width="0.01">
+            <site site="b6R"/>
+            <site site="b8R"/>
+        </spatial>
+	<spatial name="S21R" width="0.01">
+            <site site="b6R"/>
+            <site site="b9R"/>
+        </spatial>
+	<spatial name="S22R" width="0.01">
+            <site site="b6R"/>
+            <site site="b10R"/>
+        </spatial>
+	<!--<spatial name="S23R" width="0.01">
+            <site site="b4R"/>
+            <site site="b10R"/>
+        </spatial> -->
+    </tendon> 
+
+   <actuator>
+        <motor tendon="S1L" gear="200"/>
+		<motor tendon="S2L" gear="200"/> 
+		<motor tendon="S3L" gear="200"/> 
+		<motor tendon="S4L" gear="200"/> 
+		<motor tendon="S5L" gear="200"/> 
+		<motor tendon="S6L" gear="200"/> 
+		<motor tendon="S7L" gear="200"/>
+       <!-- <motor tendon="S8L" gear="200"/>
+		<motor tendon="S9L" gear="200"/>
+        <motor tendon="S10L" gear="200"/>
+		<motor tendon="S11L" gear="200"/>-->
+        <motor tendon="S12L" gear="200"/>
+	    <motor tendon="S13L" gear="200"/>
+        <motor tendon="S14L" gear="200"/>
+	<!--	<motor tendon="S15L" gear="200"/>
+        <motor tendon="S16L" gear="200"/>
+		<motor tendon="S17L" gear="200"/>
+		<motor tendon="S18L" gear="200"/>-->
+        <motor tendon="S19L" gear="200"/>
+		<motor tendon="S20L" gear="200"/>
+        <motor tendon="S21L" gear="200"/>
+	    <motor tendon="S22L" gear="200"/>
+        <!--<motor tendon="S23L" gear="200"/>-->
+
+		<motor tendon="S1R" gear="200"/>
+        <motor tendon="S2R" gear="200"/>
+		<motor tendon="S3R" gear="200"/>
+        <motor tendon="S4R" gear="200"/>
+		<motor tendon="S5R" gear="200"/>
+        <motor tendon="S6R" gear="200"/>
+		<motor tendon="S7R" gear="200"/>
+       <!-- <motor tendon="S8R" gear="200"/>
+		<motor tendon="S9R" gear="200"/>
+        <motor tendon="S10R" gear="200"/>
+		<motor tendon="S11R" gear="200"/>-->
+        <motor tendon="S12R" gear="200"/>
+	    <motor tendon="S13R" gear="200"/>
+        <motor tendon="S14R" gear="200"/>
+	<!--	<motor tendon="S15R" gear="200"/>
+        <motor tendon="S16R" gear="200"/>
+		<motor tendon="S17R" gear="200"/>
+		<motor tendon="S18R" gear="200"/>-->
+        <motor tendon="S19R" gear="200"/>
+		<motor tendon="S20R" gear="200"/>
+        <motor tendon="S21R" gear="200"/>
+	    <motor tendon="S22R" gear="200"/>
+      <!-- <motor tendon="S23R" gear="200"/>-->
+
+	<motor name="hL" joint="t2bar00L" gear="1000" ctrllimited="true" ctrlrange="-0.5 0.5"/>
+	<motor name="hR" joint="t2bar00R" gear="1000" ctrllimited="true" ctrlrange="-0.5 0.5"/>
+	<motor name="hLf" joint="t2feet00L" gear="200" ctrllimited="true" ctrlrange="-0.5 0.5"/>
+	<motor name="hRf" joint="t2feet00R" gear="200" ctrllimited="true" ctrlrange="-0.5 0.5"/>
+   </actuator> 
+	
+	<sensor>
+	 <touch name="sensor_touch_Lfeet1" site="b2L" />
+          <touch name="sensor_touch_Lfeet2" site="b8L" />
+	  <touch name="sensor_touch_Ltoe1" site="b3L" />
+          <touch name="sensor_touch_Ltoe2" site="b9L" />
+          <touch name="sensor_touch_Lknee1" site="b4L" />
+          <touch name="sensor_touch_Lknee2" site="b10L" />
+ <touch name="sensor_touch_Rfeet1" site="b2R" />
+          <touch name="sensor_touch_Rfeet2" site="b8R" />
+	  <touch name="sensor_touch_Rtoe1" site="b3R" />
+          <touch name="sensor_touch_Rtoe2" site="b9R" />
+          <touch name="sensor_touch_Rknee1" site="b4R" />
+          <touch name="sensor_touch_Rknee2" site="b10R" />
+
+	</sensor>
+</mujoco>
+

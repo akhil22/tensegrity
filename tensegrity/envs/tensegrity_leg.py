@@ -5,7 +5,7 @@ import os
 cwd = os.path.dirname(os.path.abspath(__file__))
 class TensLeg(mujoco_env.MujocoEnv, utils.EzPickle):
     def __init__(self):
-        mujoco_env.MujocoEnv.__init__(self, cwd+'/tensegrity_legv3.xml', 5)
+        mujoco_env.MujocoEnv.__init__(self, cwd+'/tensegrity_legv4.xml', 5)
         utils.EzPickle.__init__(self)
         self.reward_range = (-float('inf'), float('inf')) 
 
@@ -57,7 +57,7 @@ class TensLeg(mujoco_env.MujocoEnv, utils.EzPickle):
         quad_impact_cost = .5e-1 * np.square(data.cfrc_ext).sum()
         quad_impact_cost = min(quad_impact_cost, 10)
        # reward = 0 * lin_vel_cost - quad_ctrl_cost - quad_impact_cost - 10 * hip_height_cost + jcost*jcost*0
-        reward = lin_vel_cost*50 + hip_height_cost - (sensor_data[2] > 0)*50 - (sensor_data[4] > 0)*50 + sensor_data[0]*0 - quad_impact_cost - (sensor_data[8] > 0)*50 - (sensor_data[10] > 0)*50 + sensor_data[6]*0 + 0.5*(jcost1*jcost2 < 0)
+        reward = lin_vel_cost*10 + 10*hip_height_cost - (sensor_data[2] > 0)*50 - (sensor_data[4] > 0)*50 + sensor_data[0]*0 - quad_impact_cost - (sensor_data[8] > 0)*50 - (sensor_data[10] > 0)*50 + sensor_data[6]*0 + 0.5*(jcost1*jcost2 < 0)
      #   reward = 5 * lin_vel_cost - quad_ctrl_cost - quad_impact_cost
         #reward = lin_vel_cost*100
         qpos = self.sim.data.qpos

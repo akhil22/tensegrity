@@ -10,7 +10,7 @@ from stable_baselines.bench import Monitor
 import os
 import matplotlib.pyplot as plt
 def main():
-    train = False
+    train = True
     cont_train = False
     n_cpu = 8
     env = SubprocVecEnv([lambda: gym.make('tensegrity:TensLeg-v0') for i in range(n_cpu)])
@@ -19,11 +19,11 @@ def main():
    # env = SubprocVecEnv([lambda: gym.make('HalfCheetah-v2') for i in range(n_cpu)])
    # env = SubprocVecEnv([lambda: gym.make('CartPole-v1') for i in range(n_cpu)])
     
-    model = PPO2(MlpPolicy, env, verbose=1, tensorboard_log='./results', cliprange=0.07, learning_rate=0.000000025, ent_coef=0.0000001)
+    model = PPO2(MlpPolicy, env, verbose=1, tensorboard_log='./results', cliprange=0.2, learning_rate=0.000025, ent_coef=0.01)
     if train:
         if cont_train:
             model.load_parameters(load_path_or_dict="tppo2_cartpole_fall", exact_match=True)
-        model.learn(total_timesteps=2750000)
+        model.learn(total_timesteps=1750000)
         print('saving model')
         model.save("tppo2_cartpole_fall2")
        # del model
@@ -38,8 +38,8 @@ def main():
     i = 0
     lin_vel  =[]
     while i in range(0,5000):
-        #action, _states = model.predict(obs) 
-        action = env2.action_space.sample()
+        action, _states = model.predict(obs) 
+        #action = env2.action_space.sample()
         obs, rewards, dones, info = env2.step(action)
       #  print(action)
         lin_vel.append(rewards)
