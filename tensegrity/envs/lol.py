@@ -19,11 +19,11 @@ def main():
    # env = SubprocVecEnv([lambda: gym.make('HalfCheetah-v2') for i in range(n_cpu)])
    # env = SubprocVecEnv([lambda: gym.make('CartPole-v1') for i in range(n_cpu)])
     
-    model = PPO2(MlpPolicy, env, verbose=1, tensorboard_log='./results', cliprange=0.2, learning_rate=0.000025, ent_coef=0.01)
+    model = PPO2(MlpPolicy, env, verbose=1, tensorboard_log='./results', cliprange=0.1, learning_rate=0.000025, ent_coef=0.01)
     if train:
         if cont_train:
             model.load_parameters(load_path_or_dict="tppo2_cartpole_fall", exact_match=True)
-        model.learn(total_timesteps=1750000)
+        model.learn(total_timesteps=750000)
         print('saving model')
         model.save("tppo2_cartpole_fall2")
        # del model
