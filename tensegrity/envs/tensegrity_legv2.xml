@@ -43,7 +43,7 @@
 		<joint name="tormotionx" type="slide" axis="1 0 0" limited="false" range="2 10"/>
 		<joint name="tormotiony" type="slide" axis="0 1 0" limited="false" range="0.0 0.1"/>
 		<joint name="tormotionz" type="slide" axis="0 0 1" limited="true" range="0.0 0.1"/>
-       		<joint name="tormotionrot" type="hinge" axis="0 0 1" limited="false" range="0.0 0.1"/>
+       		<joint name="tormotionrot" type="hinge" axis="0 0 1" limited="true" range="0.0 0.1"/>
 	</body>
 
 		<body name="Lower_leg"> 		     

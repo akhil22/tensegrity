@@ -7,7 +7,7 @@
 
     <default>
 		<motor ctrllimited="true" ctrlrange="-0.5 0.5"/>
-		<tendon stiffness="1000" damping="0.1" range="0.01 10"/>
+		<tendon stiffness="10" damping="0.1" range="0.01 10"/>
 		<geom size="0.02" mass="1"/>
 		<site size="0.04"/>
 		<camera pos="0 0 10"/>
@@ -22,7 +22,7 @@
 		
 		<body name='torso1'>
                                                   <camera name="track" mode="trackcom" pos="1 0 -4" xyaxes="0 1 0 1 0 0.3"/>
-			<geom name="torso" mass="0.050" type="box" pos="1 0 0.2" size="0.5 0.1 0.4" material="self"/>
+			<geom name="torso" mass="0.500" type="box" pos="1 0 0.2" size="0.5 0.1 0.4" material="self"/>
 		   <!--<site name="At1" pos="-0.3800046 -0.3306 -0.15456"/>
 			<site name="At2" pos="0.04222 0.0367 -0.0350"/> -->
 		  
@@ -35,7 +35,7 @@
 				<geom name="bar4L" type="capsule" fromto="-0.1679 -0.00258 -0.07  0.3919 0.00603 -0.07" material="self" mass="1"/>
 				<site name="b9L" pos="-0.1679 -0.00258 -0.07"/>
 				<site name="b7L" pos="0.3919 0.00603 -0.07"/>
-				<joint name="t2bar00L" type="hinge" pos="0.5 0 -0.15" limited="true" damping="0" armature="0.02" stiffness="0" range="-20 20" axis="0 0 1"/> 
+				<joint name="t2bar00L" type="hinge" pos="0.5 0 -0.15" limited="true" damping="0" armature="0.02" stiffness="200" range="-20 20" axis="0 0 1"/> 
 			</body>
 		
 			<body name="body_bar00R"> 		     
@@ -47,7 +47,7 @@
 				<geom name="bar4R" type="capsule" fromto="-0.1679 -0.00258 0.47  0.3919 0.00603 0.47" material="self" mass="1"/>
 				<site name="b9R" pos="-0.1679 -0.00258 0.47"/>
 				<site name="b7R" pos="0.3919 0.00603 0.47"/>
-				<joint name="t2bar00R" type="hinge" pos="0.5 0 0.55" limited="true" damping="5" armature="0.02" stiffness="20" range="-20 20" axis="0 0 1"/> 
+				<joint name="t2bar00R" type="hinge" pos="0.5 0 0.55" limited="true" damping="5" armature="0.02" stiffness="200" range="-20 20" axis="0 0 1"/> 
 			</body>
 			<joint name="tormotionx" type="slide" axis="1 0 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
 			<joint name="tormotiony" type="slide" axis="0 1 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
@@ -72,7 +72,7 @@
                 <body name='left_f' pos="0 0.3 0">
 <!--                         <geom name="bar1Lfoot" type="capsule" fromto="-0.3800046 -0.3306 -0.26456  -0.3800046 -0.6 -0.26456" material="self" mass="1" size="0.07"/>
 --> 
-<geom name="bar2Lfoot" type="capsule" fromto="-0.3800046 -0.3306 0.0544 -0.3800046 -0.6 0.0544" material="self" mass="0.25" size="0.07"/> 
+<geom name="bar2Lfoot" type="capsule" fromto="-0.3800046 -0.3306 0.0544 -0.3800046 -0.6 0.0544" material="self" mass="1.0" size="0.07"/> 
  	<joint name="t2feet00L" type="hinge" pos="-0.3800046 -0.6306 0.0544" limited="true" damping="5" armature="0.02" stiffness="200" range="5 60"/> 
 <site name="bLfeet1" pos="-0.3800046 -0.4653 0.0544"/>
                 </body>
@@ -80,7 +80,7 @@
 			 <joint name="bar1motionxL" type="slide" axis="1 0 0" limited="false" range="0.0 100"/>
 			 <joint name="bar1motionyL" type="slide" axis="0 1 0" limited="false" range="0.0 100"/> -->
 	 <!-- <joint name="r1L" type="free" pos="0 0 0" limited="false" damping="0" armature="0" stiffness="0.2"/>  -->	
-			 <geom name="bar2L" type="capsule" fromto="-0.3800046 -0.3306 0.0544  0.04222 0.0367 -0.075" material="self" mass="0.250"/>
+			 <geom name="bar2L" type="capsule" fromto="-0.3800046 -0.3306 0.0544  0.04222 0.0367 -0.075" material="self" mass="1"/>
 
 			  <site name="b8L" pos="-0.3800046 -0.3306 0.0544"/>
 			  <site name="b10L" pos="0.04222 0.0367 -0.075"/>
@@ -97,7 +97,7 @@
 			<geom name="bar5L" type="capsule" fromto="0.020 -0.05 -0.195  0.020 -0.05 -0.025" material="self" mass="0.250"/>
 			<site name="b5L" pos="0.020 -0.05 -0.195"/>
 			<site name="b6L" pos="0.020 -0.05 -0.025"/>
-			<joint name="bar5motionxL" type="slide" axis="1 0 0" limited="false" damping="0" stiffness="0"/>
+			<joint name="bar5motionxL" type="slide" axis="1 0 0" limited="true" range="0.0 0.01" damping="0" stiffness="0"/>
 			<joint name="bar5motionyL" type="slide" axis="0 1 0" limited="false" damping="0" stiffness="0"/>
 			<joint name="bar5motionzL" type="slide" axis="0 0 1" limited="true" range="0.0 0.01" damping="0" stiffness="0"/>
     	</body> 
@@ -134,7 +134,7 @@
 		<geom name="bar5R" type="capsule" fromto="0.020 -0.05 0.405  0.020 -0.05 0.575" material="self"/>
 		 <site name="b6R" pos="0.020 -0.05 0.405"/>
 		 <site name="b5R" pos="0.020 -0.05 0.575"/>
-		 <joint name="bar5motionxR" type="slide" axis="1 0 0" limited="false" damping="0" stiffness="0"/>
+		 <joint name="bar5motionxR" type="slide" axis="1 0 0" limited="true" range="0.0 0.01" damping="0" stiffness="0"/>
         <joint name="bar5motionyR" type="slide" axis="0 1 0" limited="false" damping="0" stiffness="0"/>
         <joint name="bar5motionzR" type="slide" axis="0 0 1" limited="true" range="0.0 0.01" damping="0" stiffness="0"/>
 	</body> 
@@ -345,58 +345,32 @@
     </tendon> 
 
    <actuator>
-        <motor tendon="S1L" gear="200" ctrllimited="true" ctrlrange="-1 0"/>
 	<!--	<motor tendon="S2L" gear="200"/> -->
+        <!-- <motor tendon="S2R" gear="200"/> -->
+        - <motor tendon="S1L" gear="200" ctrllimited="true" ctrlrange="-1 0"/>
 		<motor tendon="S3L" gear="200"/> 
 		<motor tendon="S4L" gear="200"/> 
 		<motor tendon="S5L" gear="200"/> 
 		<motor tendon="S6L" gear="200"/> 
 		<motor tendon="S7L" gear="200"/>
-       <!-- <motor tendon="S8L" gear="200"/>
-		<motor tendon="S9L" gear="200"/>
-        <motor tendon="S10L" gear="200"/>
-		<motor tendon="S11L" gear="200"/>-->
         <motor tendon="S12L" gear="200"/>
 	    <motor tendon="S13L" gear="200"/>
-        <motor tendon="S14L" gear="200"/>
-	<!--	<motor tendon="S15L" gear="200"/>
-        <motor tendon="S16L" gear="200"/>
-		<motor tendon="S17L" gear="200"/>
-		<motor tendon="S18L" gear="200"/>-->
-        <!--<motor tendon="S19L" gear="200"/>
-		<motor tendon="S20L" gear="200"/>
-        <motor tendon="S21L" gear="200"/>
-	    <motor tendon="S22L" gear="200"/>-->
-        <!--<motor tendon="S23L" gear="200"/>-->
+        <motor tendon="S14L" gear="200"/> 
 
 		<motor tendon="S1R" gear="200" ctrllimited="true" ctrlrange="-1 0"/>
-        <!-- <motor tendon="S2R" gear="200"/> -->
 		<motor tendon="S3R" gear="200"/>
         <motor tendon="S4R" gear="200"/>
 		<motor tendon="S5R" gear="200"/>
         <motor tendon="S6R" gear="200"/>
 		<motor tendon="S7R" gear="200"/>
-       <!-- <motor tendon="S8R" gear="200"/>
-		<motor tendon="S9R" gear="200"/>
-        <motor tendon="S10R" gear="200"/>
-		<motor tendon="S11R" gear="200"/>-->
         <motor tendon="S12R" gear="200"/>
 	    <motor tendon="S13R" gear="200"/>
         <motor tendon="S14R" gear="200"/>
-	<!--	<motor tendon="S15R" gear="200"/>
-        <motor tendon="S16R" gear="200"/>
-		<motor tendon="S17R" gear="200"/>
-		<motor tendon="S18R" gear="200"/>-->
-        <!--<motor tendon="S19R" gear="200"/>
-		<motor tendon="S20R" gear="200"/>
-        <motor tendon="S21R" gear="200"/>
-	    <motor tendon="S22R" gear="200"/>-->
-      <!-- <motor tendon="S23R" gear="200"/>-->
 
 <!--	<motor name="hL" joint="t2bar00L" gear="200" ctrllimited="tue" ctrlrange="-0.2 0.2"/> -->
 	<motor name="hR" joint="t2bar00R" gear="300" ctrllimited="false" ctrlrange="-0.2 0.2"/>
-	<position name="hLf" joint="t2feet00L" gear="200" ctrllimited="false"  ctrlrange="-0.03 0.03"/>
-	<position name="hRf" joint="t2feet00R" gear="200" ctrllimited="false"  ctrlrange="-0.03 0.03"/>  
+<!--	<position name="hLf" joint="t2feet00L" gear="200" ctrllimited="false"  ctrlrange="-0.03 0.03"/>
+	<position name="hRf" joint="t2feet00R" gear="200" ctrllimited="false"  ctrlrange="-0.03 0.03"/>  --> 
    </actuator> 
 	
 	<sensor>
