@@ -22,7 +22,7 @@
 		
 		<body name='torso1'>
                                                   <camera name="track" mode="trackcom" pos="1 0 -4" xyaxes="0 1 0 1 0 0.3"/>
-			<geom name="torso" mass="1.0" type="box" pos="0.75 0 0.2" size="0.25 0.1 0.4" material="self"/>
+			<geom name="torso" mass="2.0" type="box" pos="0.75 0 0.2" size="0.25 0.1 0.4" material="self"/>
 		   <!--<site name="At1" pos="-0.3800046 -0.3306 -0.15456"/>
 			<site name="At2" pos="0.04222 0.0367 -0.0350"/> -->
 		  
@@ -155,7 +155,7 @@
     </worldbody>	
 <equality>
 <!--		<connect active="true" name='1bar34' body1="body_bar00L" body2="body_bar0L" anchor="0.4 0 -0.4"/> -->
-    <joint name="hip_cons" joint1="t2bar00L" joint2="t2bar00R" polycoef="0 -1 0 0 0"/>
+<!--    <joint name="hip_cons" joint1="t2bar00L" joint2="t2bar00R" polycoef="0 -1 0 0 0"/> -->
 </equality>  
   <tendon>
         <spatial name="S1L" width="0.01" range="0.35 0.36" limited="true">
@@ -366,7 +366,7 @@
 	    <motor tendon="S13R" gear="200"/>
         <motor tendon="S14R" gear="200"/>
 
-<!--	<motor name="hL" joint="t2bar00L" gear="300" ctrllimited="false" ctrlrange="-0.5 0.5"/> -->
+	<motor name="hL" joint="t2bar00L" gear="300" ctrllimited="false" ctrlrange="-0.5 0.5"/> 
 	<motor name="hR" joint="t2bar00R" gear="300" ctrllimited="false" ctrlrange="-0.5 0.5"/>
 	<motor name="hLf" joint="t2feet00L" gear="100" ctrllimited="false" ctrlrange="-0.15 0.15"/>
 	<motor name="hRf" joint="t2feet00R" gear="100" ctrllimited="false" ctrlrange="-0.15 0.15"/>
