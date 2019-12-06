@@ -11,7 +11,7 @@ class Sdata:
 class TensLegSep(mujoco_env.MujocoEnv, utils.EzPickle, Sdata):
     def __init__(self):
         Sdata.__init__(self)
-        mujoco_env.MujocoEnv.__init__(self, cwd+'/tensegrity_leg_sep_legv1.xml', 5)
+        mujoco_env.MujocoEnv.__init__(self, cwd+'/tensegrity_leg_sep_legsv1.xml', 5)
         utils.EzPickle.__init__(self)
         self.reward_range = (-float('inf'), float('inf')) 
 
