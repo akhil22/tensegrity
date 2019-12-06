@@ -14,6 +14,10 @@ Chekcout the [youtube video](https://www.youtube.com/watch?v=rYjT0UK_1aM) of Ten
   - [stable baselines](https://github.com/hill-a/stable-baselines).
  ### Install tensegrity
   After installing the dependencies install tensegrity- 
- - pip install -e tensegrity
+  ```python
+  pip install -e tensegrity
+  ```
 ## Training
- - python tensegrity/env/sep\_leg\_train.py
+  ```python
+   python tensegrity/env/sep\_leg\_train.py
+  ```
