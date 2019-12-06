@@ -12,34 +12,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 def main():
     train = True
-    #train = False
     cont_train = False
-    #cont_train = True
     n_cpu = 16
     env = SubprocVecEnv([lambda: gym.make('tensegrity:TensLeg-v1') for i in range(n_cpu)])
-    #env= gym.make('tensegrity:TensLeg-v0')
-    #env = DummyVecEnv([lambda: env])
-   # env = SubprocVecEnv([lambda: gym.make('HalfCheetah-v2') for i in range(n_cpu)])
-   # env = SubprocVecEnv([lambda: gym.make('CartPole-v1') for i in range(n_cpu)])
     train_num = 0
     stringp =  f"tppo2_tens_sep_legs{train_num}"
     stringp_sav = f"tppo2_tens_sep_legs{train_num+1}"
-
     model = PPO2(MlpPolicy, env, verbose=1, tensorboard_log='./results', cliprange=0.2, learning_rate=0.00025, ent_coef=0.000001)
     if train:
         if cont_train:
             model.load_parameters(load_path_or_dict=stringp, exact_match=True)
-        model.learn(total_timesteps=250000)
+        model.learn(total_timesteps=8250000)
         print('saving model')
         model.save(stringp_sav)
-       # del model
     else:
         print('loading model')
         model = PPO2.load(stringp)
-    #modeload("tppo2_cartpole")
-    env2 = gym.make('tensegrity:TensLeg-v0')
-   # env2 = gym.make('HalfCheetah-v2')
-   # env2 = gym.make('CartPole-v1')
+    env2 = gym.make('tensegrity:TensLeg-v1')
     obs=env2.reset()
     i = 0
     lin_vel  =[]
@@ -50,13 +39,10 @@ def main():
         if dones:
             obs = env2.reset()
             continue
-      #  print(action)
         lin_vel.append(rewards)
-      #  print('sdata')
         print(f"rew = {rewards}, lin_vel = {info['reward_linvel']}, height = {info['height_rew']}, joint_c = {info['reward_impact']}, xorc = {info['xorc']}, sensr = {info['sd']} lfoot = {info['lfoot']}, rfoot = {info['rfoot']}, low_knee = {info['lknee']} ctrl={info['ctrl']} DOF = {info['DOF']}")
         i = i+1
         env2.render(mode="human")
-# average rewards
     periods = 1000
     weights = np.ones(periods)/periods
     lin_vel_avg = np.convolve(lin_vel, weights, mode='valid')
