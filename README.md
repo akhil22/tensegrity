@@ -16,4 +16,4 @@ Chekcout the [youtube video](https://www.youtube.com/watch?v=rYjT0UK_1aM) of Ten
   After installing the dependencies install tensegrity- 
  - pip install -e tensegrity
 ## Training
- -python tensegrity/env/sep\_leg\_train.py
+ - python tensegrity/env/sep\_leg\_train.py
