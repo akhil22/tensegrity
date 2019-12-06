@@ -19,5 +19,5 @@ Chekcout the [youtube video](https://www.youtube.com/watch?v=rYjT0UK_1aM) of Ten
   ```
 ## Training
   ```python
-   python tensegrity/env/sep\_leg\_train.py
+   python tensegrity/env/sep_leg_train.py
   ```
