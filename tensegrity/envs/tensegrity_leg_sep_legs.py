@@ -104,7 +104,8 @@ class TensLegSep(mujoco_env.MujocoEnv, utils.EzPickle, Sdata):
             reward = 3
         else:
             reward = 1  '''
-        reward = hip_height_cost + 0.75 + lin_vel_cost
+        #reward = hip_height_cost + 0.75 + lin_vel_cost
+        reward = lin_vel_cost
         DOF = self.model.body_dofnum
         if not (self.n_frames % 5000) and self.n_frames != 0:
             done = True
@@ -119,8 +120,8 @@ class TensLegSep(mujoco_env.MujocoEnv, utils.EzPickle, Sdata):
          #   reward = -10
         if hip_height_cost < 0:
             self.n_frames = 0
-            done = True
-            reward = -10
+            #done = True
+            #reward = -10
         return ob, reward, done, dict(reward_linvel=lin_vel_cost*100, height_rew=10*hip_height_cost, 
                                       reward_impact= -1000*((jcost1*jcost2) > 0), joint_cost = 1000*jcost1*jcost2, DOF =torso_angle, sd = 100, xorc = xr_cost, lfoot = 100, rfoot = 100, lknee = -1000*low_knee, ctrl=quad_ctrl_cost)
 

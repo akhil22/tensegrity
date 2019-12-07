@@ -12,17 +12,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 def main():
     train = True
-    cont_train = False
+    cont_train = True
     n_cpu = 16
     env = SubprocVecEnv([lambda: gym.make('tensegrity:TensLeg-v1') for i in range(n_cpu)])
-    train_num = 0
-    stringp =  f"tppo2_tens_sep_legs{train_num}"
-    stringp_sav = f"tppo2_tens_sep_legs{train_num+1}"
+    train_num = 2
+    stringp =  f"tppo2_tens_sep_legs_run{train_num}"
+    stringp_sav = f"tppo2_tens_sep_legs_run{train_num+1}"
     model = PPO2(MlpPolicy, env, verbose=1, tensorboard_log='./results', cliprange=0.2, learning_rate=0.00025, ent_coef=0.000001)
     if train:
         if cont_train:
             model.load_parameters(load_path_or_dict=stringp, exact_match=True)
-        model.learn(total_timesteps=8250000)
+        model.learn(total_timesteps=25250000)
         print('saving model')
         model.save(stringp_sav)
     else:

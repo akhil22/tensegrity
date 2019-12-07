@@ -51,11 +51,11 @@
 			</body>
 			<joint name="tormotionx" type="slide" axis="1 0 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
 			<joint name="tormotiony" type="slide" axis="0 1 0" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
-			<joint name="tormotionz" type="slide" axis="0 0 1" limited="true" range="0.0 0.1" damping="0" stiffness="0"/>
+			<joint name="tormotionz" type="slide" axis="0 0 1" limited="false" range="0.0 0.1" damping="0" stiffness="0"/>
 		<!--	<joint name="tormotionxR" type="slide" axis="1 0 0" limited="false" range="0.0 0.1"/>
 			<joint name="tormotionyR" type="slide" axis="0 1 0" limited="false" range="0.0 0.1"/>
 			<joint name="tormotionzR" type="slide" axis="0 0 1" limited="true" range="0.0 0.1"/> -->
-			<joint name="tormotionrot" type="hinge" axis="0 0 1" limited="false" range="0 0.1" damping="0" stiffness="0"/> 
+			<joint name="tormotionrot" type="hinge" axis="0 0 1" limited="true" range="0 0.1" damping="0" stiffness="0"/> 
 			<joint name="tormotionroty" type="hinge" axis="0 1 0" limited="true" range="0 0.1" damping="0" stiffness="0"/> 
 			<joint name="tormotionrotx" type="hinge" axis="1 0 0" limited="true" range="0 0.1" damping="0" stiffness="0"/> 
 		</body>
